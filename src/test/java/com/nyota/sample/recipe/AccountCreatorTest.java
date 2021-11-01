@@ -2,8 +2,9 @@ package com.nyota.sample.recipe;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.time.LocalDateTime;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,4 +40,9 @@ public class AccountCreatorTest {
         assertNotNull(randomName);
     }
 
+    @Test
+    public void testGetRandomDate() {
+        LocalDateTime localdt = acc.getRandomDate(LocalDateTime.parse("23-10-1975"), LocalDateTime.parse ("23-10-2021"));
+        System.out.println (localdt);
+    }
 }

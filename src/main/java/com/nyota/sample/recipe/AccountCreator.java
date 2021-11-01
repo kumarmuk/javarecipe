@@ -19,10 +19,10 @@ public class AccountCreator {
     public Account createAccount() {
         Account acc = new Account();
         acc.setAccountHolder(this.createAccHolder());
-        acc.setAccountOpening(this.getRandomDate(startDate, endDate));
-        acc.setAccountStatus(accountStatus);
-        acc.setAccountType(accountType);
-        acc.setId(id);
+        acc.setAccountOpening(this.getRandomDate(LocalDateTime.parse ("23/10/1976"), LocalDateTime.parse ("23/10/2021")));
+        //acc.setAccountStatus(accountStatus);
+        //acc.setAccountType(accountType);
+        //acc.setId(id);
         return acc;
     }
 
