@@ -13,15 +13,16 @@ public class AccountCreator {
     int numOfAccounts = 0;
     private static Random random = new Random();
     private static final AccountType[] accountTypeValues = AccountType.values();
-    
+    public static final int accStart = 1111111111;
+    public static final int accEnd = 999999999;
 
     public Account createAccount() {
         Account acc = new Account();
         acc.setAccountHolder(this.createAccHolder());
         acc.setAccountOpening(this.getRandomDate(LocalDateTime.parse("23/10/1976"), LocalDateTime.parse("23/10/2021")));
         acc.setAccountStatus(this.getRandomStatus());
-        // acc.setAccountType(accountType);
-        // acc.setId(id);
+        acc.setAccountType(this.getRandomAccountType());
+        acc.setId(this.getRandomAccountNumber());
         return acc;
     }
 
@@ -57,13 +58,22 @@ public class AccountCreator {
             return Boolean.FALSE;
     }
 
-
     /**
      * this method will be used to get the random account type
+     * 
      * @return
      */
-    public AccountType getRandomAccountType () {
+    public AccountType getRandomAccountType() {
         int index = random.nextInt(accountTypeValues.length);
-        return accountTypeValues[index];    
+        return accountTypeValues[index];
+    }
+
+    /**
+     * This method will generate an int value that can be used as Id
+     * 
+     * @return
+     */
+    public int getRandomAccountNumber() {
+        return (int) Math.floor(Math.random() * AccountCreator.accEnd) + AccountCreator.accStart;
     }
 }
