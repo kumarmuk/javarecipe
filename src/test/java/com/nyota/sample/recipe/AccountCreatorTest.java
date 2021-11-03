@@ -5,7 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +44,23 @@ public class AccountCreatorTest {
 
     @Test
     public void testGetRandomDate() {
-        LocalDateTime localdt = acc.getRandomDate(LocalDateTime.parse("23-10-1975"), LocalDateTime.parse ("23-10-2021"));
-        System.out.println (localdt);
+        LocalDateTime startDate = LocalDateTime.parse("23-10-1975 00:00:00", DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        LocalDateTime endDate = LocalDateTime.parse("23-10-2021 00:00:00", DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        LocalDateTime localdt = acc.getRandomDate(startDate, endDate);
+        System.out.println ("Random local date time produced is " + localdt);
+        assertNotNull (localdt);
     }
+
+    @Test
+    public void testGetRandomStatus() {
+        Boolean accStatus = acc.getRandomStatus();
+        System.out.println (accStatus);
+        assertTrue(accStatus instanceof Boolean);
+    }
+
+    @Test
+    public void testGetRandomAccountType() {
+        assertNotNull(acc.getRandomAccountType());
+    }
+
 }

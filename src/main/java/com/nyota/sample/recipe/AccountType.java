@@ -1,7 +1,7 @@
 package com.nyota.sample.recipe;
 
 public enum AccountType {
-    CORPORATE(10000), SAVINGS(50), CHECKING(50);
+    CORPORATE(1), SAVINGS(2), CHECKING(3);
 
     public int getMinimumAmt() {
         return minimumAmt;
