@@ -2,6 +2,7 @@ package com.nyota.sample.recipe;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -15,11 +16,15 @@ public class AccountCreator {
     private static final AccountType[] accountTypeValues = AccountType.values();
     public static final int accStart = 1111111111;
     public static final int accEnd = 999999999;
+    public static final LocalDateTime startDate = LocalDateTime.parse("23-10-1975 00:00:00",
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+    public static final LocalDateTime endDate = LocalDateTime.parse("23-10-2021 00:00:00",
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
 
     public Account createAccount() {
         Account acc = new Account();
         acc.setAccountHolder(this.createAccHolder());
-        acc.setAccountOpening(this.getRandomDate(LocalDateTime.parse("23/10/1976"), LocalDateTime.parse("23/10/2021")));
+        acc.setAccountOpening(this.getRandomDate(startDate, endDate));
         acc.setAccountStatus(this.getRandomStatus());
         acc.setAccountType(this.getRandomAccountType());
         acc.setId(this.getRandomAccountNumber());

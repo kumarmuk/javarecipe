@@ -52,4 +52,13 @@ public class Account {
     public void setAccountStatus(Boolean accountStatus) {
         this.accountStatus = accountStatus;
     }
+
+    public String toString () {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: " + this.getId() + " ");
+        sb.append("Opening Date: " +this.getAccountOpening() + " ");
+        sb.append("Status: " + this.getAccountStatus() + " ");
+        sb.append("Type: " + this.getAccountType() + " ");
+        return sb.toString();
+    }
 }
